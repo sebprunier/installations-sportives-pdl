@@ -54,12 +54,14 @@ L'application est constituée de plusieurs composants ayant chacun un rôle bien
 
 A partir des fichiers CSV, définissez le Modèle Conceptuel de Données (MCD) de l'application, sachant que :
 
-* toutes les colonnes des fichiers CSV ne vont pas forcément nous intéresser (n'utilisez que celle que vous trouvez intéressantes !)
-* des liens existent entre les trois jeux de données.
+* Toutes les colonnes des fichiers CSV ne vont pas forcément nous intéresser (n'utilisez que celle que vous trouvez intéressantes !)
+* Des liens existent entre les trois jeux de données.
 
 ### Import des données depuis les fichiers CSV
 
 C'est le premier travail à réaliser :
 
-* A partir du Modèle Conceptuel de Données, créez le Modèle Physique de Données.
+* A partir du Modèle Conceptuel de Données, définissez le Modèle Physique de Données (MPD).
 * Créez ensuite les composants `Admin` et `Import`
+  * Utilisez votre base MySQL (via PhpMyAdmin) ou bien [SQLite](https://www.sqlite.org/) disponible de base dans le module [`sqlite3`](https://docs.python.org/3.6/library/sqlite3.html) de Python.
+  * Utilisez le module [`csv`](https://docs.python.org/3.6/library/csv.html) pour la lecture des fichiers de données.
