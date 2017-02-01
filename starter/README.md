@@ -84,6 +84,8 @@ def estPremier(n) :
     return True
 ```
 
+Pour lancer l'exécution des tests unitaires : `python3 premier.py -v`
+
 ### Gestion des erreurs
 
 Posez-vous les questions suivantes :
