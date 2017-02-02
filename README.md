@@ -63,5 +63,5 @@ C'est le premier travail à réaliser :
 
 * A partir du Modèle Conceptuel de Données, définissez le Modèle Physique de Données (MPD).
 * Créez ensuite les composants `Admin` et `Import`
-  * Utilisez votre base MySQL (via PhpMyAdmin) ou bien [SQLite](https://www.sqlite.org/) disponible de base dans le module [`sqlite3`](https://docs.python.org/3.6/library/sqlite3.html) de Python.
+  * Utilisez votre base MySQL (via PhpMyAdmin) et le module `mysql.connector` ou bien [SQLite](https://www.sqlite.org/) disponible de base dans le module [`sqlite3`](https://docs.python.org/3.6/library/sqlite3.html) de Python.
   * Utilisez le module [`csv`](https://docs.python.org/3.6/library/csv.html) pour la lecture des fichiers de données.
