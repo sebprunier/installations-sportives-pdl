@@ -84,7 +84,15 @@ def estPremier(n) :
     return True
 ```
 
-Pour lancer l'exécution des tests unitaires : `python3 premier.py -v`
+Ajoutez le code suivant à la fin du fichier, permettant l'exécution des tests : 
+
+```python
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
+```
+
+Dans un terminal, lancez la commande suivante exécuter les tests unitaires : `python3 premier.py -v`
 
 ### Gestion des erreurs
 
