@@ -57,6 +57,14 @@ A partir des fichiers CSV, définissez le Modèle Conceptuel de Données (MCD) d
 * Toutes les colonnes des fichiers CSV ne vont pas forcément nous intéresser (n'utilisez que celle que vous trouvez intéressantes !)
 * Des liens existent entre les trois jeux de données.
 
+Voici une solution possible :
+
+![](./images/uml_model.png)
+
+* Une installation possède un ou plusieurs équipements.
+* Une ou plusieurs activités peuvent être pratiquées sur un équipement donné.
+* Une même activité peut être pratiquée sur différents équipements.
+
 ### Import des données depuis les fichiers CSV
 
 C'est le premier travail à réaliser :
