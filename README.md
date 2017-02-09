@@ -73,3 +73,7 @@ C'est le premier travail à réaliser :
 * Créez ensuite les composants `Admin` et `Import`
   * Utilisez votre base MySQL (via PhpMyAdmin) et le module `mysql.connector` ou bien [SQLite](https://www.sqlite.org/) disponible de base dans le module [`sqlite3`](https://docs.python.org/3.6/library/sqlite3.html) de Python.
   * Utilisez le module [`csv`](https://docs.python.org/3.6/library/csv.html) pour la lecture des fichiers de données.
+
+Voici une solution possible pour le MPD :
+
+![](./images/database_model.png)
