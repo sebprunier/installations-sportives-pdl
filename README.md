@@ -77,3 +77,44 @@ C'est le premier travail à réaliser :
 Voici une solution possible pour le MPD :
 
 ![](./images/database_model.png)
+
+### Qualité des données
+
+#### Latitudes et longitudes des installations sportives
+
+Les latitudes et longitudes des installations sportives ne sont pas précises : elles correspondent à la ville de l'installation et non à l'adresse précise de celle-ci.
+
+Pour améliorer cela, vous pouvez utiliser une API de **reverse geocoding** lors de l'import des données dans la base (ou bien en post traitement, comme vous préférez).
+
+Une solution possible est [**MapQuest**](https://developer.mapquest.com/documentation/geocoding-api/).
+
+Exemple simple d'utilisation en Python :
+
+```python
+import http.client
+from urllib.parse import urlencode
+import json
+
+API_KEY = "YOUR_API_KEY"
+
+try:
+    location = input('Entrez une adresse : ')
+
+    urlParams = {'location': location, 'key': API_KEY, 'inFormat':'kvp', 'outFormat':'json'}
+    url = "/geocoding/v1/address?" + urlencode(urlParams)
+
+    conn = http.client.HTTPConnection("www.mapquestapi.com")
+    conn.request("GET", url)
+
+    res = conn.getresponse()
+    print(res.status, res.reason)
+
+    data = res.read()
+    jsonData = json.loads(data)
+    # FIXME le print n'est pas très secure...
+    print(jsonData['results'][0]['locations'][0]['latLng'])
+except Exception as err:
+    print("Unexpected error: {0}".format(err))
+finally:
+    conn.close()
+```
