@@ -78,6 +78,38 @@ Voici une solution possible pour le MPD :
 
 ![](./images/database_model.png)
 
+### Services métiers
+
+Une fois les données insérées et disponibles dans la base de données, créez un ensemble de services permettant de les exploiter.
+
+Par exemple :
+
+* Lister les installations sportives d'une ville donnée.
+* Lister les installations (ou les équipements) où l'on peut pratiquer une activité donnée.
+
+En vue du développement de l'application web, des services de suggestion peuvent également être développés pour :
+
+* Suggérer des villes
+* Suggérer des activités
+
+*Un service de suggestion prend en entrée une chaîne de caractères et retourne un ensemble de libellés correspondant à cette chaîne. Par exemple, le service de suggestion des activités retournera l'ensemble ['Basket-Ball', 'Badminton', 'Baignade loisirs'] pour la chaîne 'Ba'*
+
+#### Requêtes SQL
+
+Avant d'écrire le code Python des services métiers, commencez par écrire et tester les requêtes SQL qui seront utilisées par les services.
+
+Exemple de requête pour la liste des installations sportive d'une ville :
+
+```sql
+SELECT i.numero, i.nom FROM INSTALLATION i WHERE i.ville = 'Nantes'
+```
+
+Exemple de requête pour la suggestion des activités :
+
+```sql
+SELECT a.nom FROM ACTIVITE WHERE a.nom LIKE 'Ba%'
+```
+
 ### Qualité des données
 
 #### Latitudes et longitudes des installations sportives
@@ -117,4 +149,18 @@ except Exception as err:
     print("Unexpected error: {0}".format(err))
 finally:
     conn.close()
+```
+
+Si vous rencontrez des problèmes de connexion à cause du proxy, essayez plutôt quelque chose comme cela :
+
+```python
+from urllib import request
+
+proxy_host = 'proxyetu.iut-nantes.univ-nantes.prive:3128'
+req = request.Request(url)
+req.set_proxy(proxy_host, 'http')
+
+response = request.urlopen(req)
+
+data = response.read().decode('utf8')
 ```
