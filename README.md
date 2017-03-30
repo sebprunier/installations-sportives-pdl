@@ -110,6 +110,52 @@ Exemple de requête pour la suggestion des activités :
 SELECT a.nom FROM ACTIVITE WHERE a.nom LIKE 'Ba%'
 ```
 
+### Exposition d'un service REST
+
+La librairie [Bottle](http://bottlepy.org/) permet de créer facilement des services REST.
+
+Pour faire un premier test, téléchargez le fichier `bottle.py` et placez le dans un dossier `libs` de votre projet.
+
+Lien vers la version 0.12.13 : [https://raw.githubusercontent.com/bottlepy/bottle/0.12.13/bottle.py](https://raw.githubusercontent.com/bottlepy/bottle/0.12.13/bottle.py)
+
+Voici le code permettant de faire le classique Hello World (fichier `rest-example.py`	) :
+
+```python
+from libs.bottle import route, template, run
+
+@route('/hello/<name>')
+def index(name):
+    return template('<b>Hello {{name}}</b>!', name=name)
+
+run(host='localhost', port=8888)
+```
+
+Lancez ensuite le programme :
+
+```
+$> python3 rest-example.py
+Bottle v0.12.13 server starting up (using WSGIRefServer())...
+Listening on http://localhost:8888/
+Hit Ctrl-C to quit.
+```
+
+Vous pouvez vérifier que tout va bien :
+
+* soit via la commande `curl` : `curl -XGET http://localhost:8888/hello/world`
+* soit directement dans un navigateur : http://localhost:8888/hello/world
+
+#### JSON
+
+Bottle permet de gérer nativement le format JSON en s'appuyant sur les dictionnaires.
+
+Exemple :
+
+```python
+@route('/json')
+def helloJson():
+    return { "message" : "Hello" }
+```
+
 ### Qualité des données
 
 #### Latitudes et longitudes des installations sportives
