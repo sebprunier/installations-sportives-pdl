@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Activités sportives</title>
+    <script src="js/react.min.js"></script>
+    <script src="js/react-dom.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <div id="main"></div>
+    <script type="text/babel">
+      const Activities = React.createClass({
+        getInitialState() {
+          return {
+            activities: []
+          };
+        },
+
+        componentDidMount() {
+          let url = '/api/activities';
+          $.ajax({
+            url: url,
+            dataType: 'json',
+            cache: false,
+            success: function(data) {
+              this.setState({activities: data.activities});
+            }.bind(this),
+            error: function(xhr, status, err) {
+              console.error(url, status, err.toString());
+            }.bind(this)
+          });
+        },
+
+        render () {
+          return (
+              <div>
+                <h1>Liste des activités</h1>
+                {this.state.activities.map(activity => <div>{activity.code + ' - ' + activity.label}</div>)}
+              </div>
+          )
+        }
+      });
+
+      ReactDOM.render(
+        <Activities />,
+        document.getElementById('main')
+      );
+    </script>
+  </body>
+</html>
