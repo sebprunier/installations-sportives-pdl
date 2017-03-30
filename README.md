@@ -156,6 +156,16 @@ def helloJson():
     return { "message" : "Hello" }
 ```
 
+#### Exemple complet
+
+Un exemple complet permettant d'afficher la liste des activités sportives dans une page web est disponible dans le dossier [`full-stack-example`](`./full-stack-example`)
+
+Etapes à suivre :
+
+* Lancez l'import des activités : `python3 ImportAllData.py`
+* Démarrez l'application : `python3 Application.py`
+* Rendez-vous sur la page : [`http://localhost:8888/index.html`](http://localhost:8888/index.html)
+
 ### Qualité des données
 
 #### Latitudes et longitudes des installations sportives
